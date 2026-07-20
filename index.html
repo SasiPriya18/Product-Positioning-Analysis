@@ -25,8 +25,15 @@
             z-index: 1000;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             min-height: 70px;
+        }
+
+        .navbar .container-fluid {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            width: 100%;
+            flex-wrap: wrap;
         }
 
         .navbar-brand {
@@ -35,13 +42,15 @@
             color: #ffffff !important;
             letter-spacing: 2px;
             flex-shrink: 0;
+            text-decoration: none;
         }
 
         .navbar-nav {
-            display: flex !important;
-            flex-direction: row !important;
+            display: flex;
+            flex-direction: row;
             align-items: center;
             gap: 0;
+            margin-left: auto;
         }
 
         .navbar-nav .nav-item {
@@ -57,6 +66,7 @@
             transition: color 0.3s ease;
             position: relative;
             white-space: nowrap;
+            text-decoration: none;
         }
 
         .navbar-nav .nav-link:hover {
@@ -86,6 +96,9 @@
         .navbar-toggler {
             border: none;
             padding: 0.25rem 0.75rem;
+            background: none;
+            cursor: pointer;
+            display: none;
         }
 
         .navbar-toggler:focus {
@@ -95,6 +108,9 @@
 
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffc107' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 25px;
+            height: 25px;
+            display: inline-block;
         }
 
         .get-started-btn {
@@ -107,12 +123,36 @@
             transition: all 0.3s ease;
             cursor: pointer;
             white-space: nowrap;
-            margin-left: auto;
+            text-decoration: none;
         }
 
         .get-started-btn:hover {
             background-color: #ffc107;
             color: #1a1a1a;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-nav {
+                width: 100%;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 0;
+                padding: 0.75rem 0 !important;
+            }
+
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+
+            .get-started-btn {
+                width: 100%;
+                margin-top: 1rem;
+            }
         }
 
         /* Hero Section */

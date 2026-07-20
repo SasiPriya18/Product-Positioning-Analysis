@@ -21,8 +21,15 @@
             z-index: 1000;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             min-height: 70px;
+        }
+
+        .navbar .container-fluid {
             display: flex;
             align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            width: 100%;
+            flex-wrap: wrap;
         }
 
         .navbar-brand {
@@ -35,10 +42,11 @@
         }
 
         .navbar-nav {
-            display: flex !important;
-            flex-direction: row !important;
+            display: flex;
+            flex-direction: row;
             align-items: center;
             gap: 0;
+            margin-left: auto;
         }
 
         .navbar-nav .nav-item {
@@ -99,6 +107,78 @@
             width: 25px;
             height: 25px;
             display: inline-block;
+        }
+
+        .navbar-collapse {
+            width: 100%;
+        }
+
+        .get-started-btn {
+            background-color: transparent;
+            color: #ffc107;
+            border: 2px solid #ffc107;
+            padding: 0.6rem 1.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .get-started-btn:hover {
+            background-color: #ffc107;
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-nav {
+                width: 100%;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 0;
+                padding: 0.75rem 0 !important;
+            }
+
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+
+            .get-started-btn {
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar .container-fluid {
+                justify-content: space-between;
+            }
+
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                width: 100%;
+                margin: 0;
+                padding: 0.75rem 0 0;
+            }
+
+            .navbar-nav .nav-link {
+                margin: 0;
+                padding: 0.75rem 0 !important;
+            }
+
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
         }
 
         .get-started-btn {
@@ -185,17 +265,7 @@
             }
 
             .navbar-nav {
-                display: none !important;
-                flex-direction: column !important;
-                gap: 0.5rem;
-                margin-top: 1rem;
-                padding-top: 1rem;
-                border-top: 1px solid #333;
                 width: 100%;
-            }
-
-            .navbar-nav.show {
-                display: flex !important;
             }
 
             .navbar-nav .nav-link {
@@ -212,6 +282,7 @@
                 margin-left: 0;
                 margin-top: 1rem;
             }
+        }
 
             .tableauPlaceholder {
                 min-height: 140vh;
@@ -235,29 +306,32 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
             <a class="navbar-brand" href="index.html">SALES</a>
-            <button class="navbar-toggler" id="navbarToggle" type="button" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <ul class="navbar-nav" id="navbarNav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="product_analysis.html">DashBoard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="story.html">Story</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product_analysis.html">DashBoard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="story.html">Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
             <button class="get-started-btn">Get Started</button>
         </div>
     </nav>
@@ -319,22 +393,6 @@
         const scriptElement = document.createElement('script');
         scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
         vizElement.parentNode.insertBefore(scriptElement, vizElement);
-
-        // Navbar Toggle
-        const navbarToggle = document.getElementById('navbarToggle');
-        const navbarNav = document.getElementById('navbarNav');
-
-        navbarToggle.addEventListener('click', () => {
-            navbarNav.classList.toggle('show');
-        });
-
-        // Close menu when a link is clicked
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navbarNav.classList.remove('show');
-            });
-        });
     </script>
 </body>
 </html>
